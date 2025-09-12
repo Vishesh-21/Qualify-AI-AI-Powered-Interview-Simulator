@@ -1,14 +1,11 @@
-import { ToggleMode } from "@/components/ToggleMode";
-import { Button } from "@/components/ui/button";
 import React from "react";
+import NavbarDemo from "./_components/Navbar";
 
 const HomeComponent = () => {
   return (
-    <div>
-      <h1 className="text-4xl gradient-title">Qualify Ai</h1>
-      <h1>This is my home component</h1>
-      <Button>Home button</Button>
-      <ToggleMode />
+    <div className="h-screen mt-10">
+      <NavbarDemo />
+      
     </div>
   );
 };

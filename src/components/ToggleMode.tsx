@@ -24,10 +24,10 @@ export function ToggleMode() {
       variant={buttonVariant}
       size={"icon"}
       onClick={toggleTheme}
-      className="cursor-pointer"
+      className="cursor-pointer relative z-20"
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] transition-all dark:hidden" />
-      <Moon className="h-[1.2rem] w-[1.2rem] hidden dark:block transition-all" />
+      <Sun className="h-[2rem] w-[2rem] transition-all dark:hidden" />
+      <Moon className="h-[2rem] w-[2rem] hidden dark:block transition-all" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
