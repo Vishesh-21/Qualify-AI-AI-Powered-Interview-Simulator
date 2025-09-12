@@ -1,3 +1,4 @@
+import { Cover } from "@/components/ui/cover";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { IconArrowRightRhombus } from "@tabler/icons-react";
@@ -5,13 +6,20 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="w-full h-screen flex items-center mt-24 flex-col">
+    <div className="w-full max-h-screen flex items-center mt-24 flex-col gap-4">
       <Spotlight />
-      <h3 className="text-2xl font-medium"> Crack Your Next Interview with</h3>
-      <h1 className="text-[6rem] font-bold gradient-title leading-25 uppercase tracking-wide">
-        Qualify AI
-      </h1>
-      <p className="text-sm w-1/2 text-center">
+      <h3 className="md:text-2xl text-xl font-medium">
+        Crack Your Next Interview with
+      </h3>
+      <Cover>
+        <h1
+          id="title"
+          className="md:text-[6rem] text-[4rem] font-bold gradient-title md:leading-25 leading-15 uppercase tracking-wide"
+        >
+          Qualify AI
+        </h1>
+      </Cover>
+      <p className="text-sm w-2/3 text-center">
         Practice with an AI Voice Interviewer that simulates real interview
         scenarios — sharpen your skills, get instant feedback, and boost your
         confidence.
