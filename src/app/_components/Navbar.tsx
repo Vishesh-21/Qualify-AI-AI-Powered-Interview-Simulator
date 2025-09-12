@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 
-export function NavbarDemo() {
+export function HomeNavbar() {
   const navItems = [
     {
       name: "Home",
@@ -32,10 +32,10 @@ export function NavbarDemo() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="w-full fixed top-0 left-0">
+    <div className="sticky top-3 z-100">
       <Navbar>
         {/* Desktop Navigation */}
-        <NavBody className="border-[2px] border-neutral-200 dark:border-neutral-700">
+        <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-2">
@@ -86,4 +86,4 @@ export function NavbarDemo() {
   );
 }
 
-export default NavbarDemo;
+export default HomeNavbar;

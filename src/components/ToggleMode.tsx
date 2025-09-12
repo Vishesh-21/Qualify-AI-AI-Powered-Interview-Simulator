@@ -26,8 +26,8 @@ export function ToggleMode() {
       onClick={toggleTheme}
       className="cursor-pointer relative z-20"
     >
-      <Sun className="h-[2rem] w-[2rem] transition-all dark:hidden" />
-      <Moon className="h-[2rem] w-[2rem] hidden dark:block transition-all" />
+      <Sun className="h-[2rem] w-[2rem] transition-all hidden dark:block" />
+      <Moon className="h-[2rem] w-[2rem] block dark:hidden transition-all" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

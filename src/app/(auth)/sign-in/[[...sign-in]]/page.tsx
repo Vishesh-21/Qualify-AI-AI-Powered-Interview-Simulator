@@ -1,9 +1,13 @@
+import { DotBackgroundDemo } from "@/components/ui/DotBackgroundDemo";
 import { SignIn } from "@clerk/nextjs";
+import React from "react";
 
-export default function Page() {
+const SignInPage = () => {
   return (
-    <div className="flex h-screen items-center justify-center">
+    <DotBackgroundDemo>
       <SignIn />
-    </div>
+    </DotBackgroundDemo>
   );
-}
+};
+
+export default SignInPage;
