@@ -9,7 +9,7 @@ import Footer from "./_components/home/Footer";
 
 const HomeComponent = () => {
   return (
-    <div className="px-10">
+    <div className="md:px-10 px-3">
       <Banner />
       <PurposeSection />
       <Services />

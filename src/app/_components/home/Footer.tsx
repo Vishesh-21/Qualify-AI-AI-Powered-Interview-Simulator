@@ -28,11 +28,11 @@ export default Footer;
 export function HelpingFooter() {
   return (
     <footer className="w-full dark:bg-black bg-white">
-      <div className="max-w-7xl mx-auto px-6 pb-8">
+      <div className="max-w-7xl mx-auto md:px-6 pb-8">
         <Card className="w-full rounded-2xl shadow-sm ">
           <CardContent className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-start gap-2">
-              <div className="text-xl font-semibold tracking-tight gradient-title">
+            <div className="flex items-center md:flex-row flex-col gap-2">
+              <div className="text-xl font-semibold tracking-wide gradient-title">
                 Qualify AI
               </div>
               <p className="md:text-base text-sm text-muted-foreground">
@@ -93,7 +93,7 @@ export function FloatingDockDemo() {
     },
   ];
   return (
-    <div className="flex items-center justify-center">
+    <div className="md:flex items-center justify-center hidden">
       <FloatingDock items={links} />
     </div>
   );

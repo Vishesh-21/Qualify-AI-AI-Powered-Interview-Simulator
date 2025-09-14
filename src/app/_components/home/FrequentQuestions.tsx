@@ -12,7 +12,7 @@ import { motion } from "motion/react";
 
 const FrequentQuestions = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col gap-14">
+    <div className="md:min-h-screen flex items-center justify-center flex-col md:gap-14 gap-8">
       <div className="max-w-7xl mx-auto text-center">
         <p className="font-bold text-xl md:text-4xl dark:text-white text-black">
           Frequently{" "}
