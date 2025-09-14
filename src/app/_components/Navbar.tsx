@@ -12,6 +12,8 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import { UserButton, SignInButton, useUser } from "@clerk/nextjs";
+import { useTheme } from "next-themes";
 
 export function HomeNavbar() {
   const navItems = [
@@ -20,14 +22,17 @@ export function HomeNavbar() {
       link: "/",
     },
     {
-      name: "Dashboard",
-      link: "/dashboard",
+      name: "Interview",
+      link: "/interview",
     },
     {
       name: "Contact",
       link: "#contact",
     },
   ];
+
+  const { isSignedIn } = useUser();
+  const { theme } = useTheme();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -40,7 +45,24 @@ export function HomeNavbar() {
           <NavItems items={navItems} />
           <div className="flex items-center gap-2">
             <ToggleMode />
-            <NavbarButton variant="secondary">Sign in</NavbarButton>
+            {isSignedIn ? (
+              <UserButton
+                appearance={{
+                  elements: {
+                    avatarBox: {
+                      width: "34px",
+                      height: "34px",
+                    },
+                  },
+                }}
+              />
+            ) : (
+              <SignInButton>
+                <NavbarButton variant={theme === "dark" ? "primary" : "dark"}>
+                  Sign in
+                </NavbarButton>
+              </SignInButton>
+            )}
           </div>
         </NavBody>
 
@@ -50,6 +72,7 @@ export function HomeNavbar() {
             <NavbarLogo />
             <div className="flex items-center gap-2">
               <ToggleMode />
+              {isSignedIn && <UserButton />}
               <MobileNavToggle
                 isOpen={isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -71,13 +94,17 @@ export function HomeNavbar() {
               </a>
             ))}
             <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
+              {!isSignedIn && (
+                <SignInButton>
+                  <NavbarButton
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    variant={theme === "dark" ? "primary" : "dark"}
+                    className="w-full"
+                  >
+                    Sign in
+                  </NavbarButton>
+                </SignInButton>
+              )}
             </div>
           </MobileNavMenu>
         </MobileNav>

@@ -7,22 +7,26 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
 export function ToggleMode() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; 
+  }
 
   const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    setTheme(resolvedTheme === "light" ? "dark" : "light");
   };
 
-  const buttonVariant = theme === "dark" ? "default" : "outline";
 
   return (
     <Button
-      variant={buttonVariant}
-      size={"icon"}
+      variant="outline"
+      size="icon"
       onClick={toggleTheme}
       className="cursor-pointer relative z-20"
     >

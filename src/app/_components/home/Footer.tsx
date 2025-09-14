@@ -35,7 +35,7 @@ export function HelpingFooter() {
               <div className="text-xl font-semibold tracking-tight gradient-title">
                 Qualify AI
               </div>
-              <p className="text-base text-muted-foreground">
+              <p className="md:text-base text-sm text-muted-foreground">
                 Helping you ace interviews —
                 <FlipWords
                   words={[

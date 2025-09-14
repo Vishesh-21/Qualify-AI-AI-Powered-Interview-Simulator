@@ -1,20 +1,29 @@
+"use client";
+
 import { Cover } from "@/components/ui/cover";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { IconArrowRightRhombus } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Banner = () => {
+  const navigate = useRouter();
+
+  const handleOnClick = () => {
+    navigate.push("/interview");
+  };
+
   return (
     <div className="w-full max-h-screen flex items-center mt-24 flex-col gap-4">
       <Spotlight />
       <h3 className="md:text-2xl text-xl font-medium">
         Crack Your Next Interview with
       </h3>
-      <Cover>
+      <Cover className="group">
         <h1
           id="title"
-          className="md:text-[6rem] text-[4rem] font-bold gradient-title md:leading-25 leading-15 uppercase tracking-wide"
+          className="md:text-[6rem] text-[4rem] font-bold gradient-title md:leading-25 leading-15 uppercase tracking-wide group-hover:text-gray-300"
         >
           Qualify AI
         </h1>
@@ -29,6 +38,7 @@ const Banner = () => {
           containerClassName="rounded-full"
           as="button"
           className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 cursor-pointer"
+          onClick={handleOnClick}
         >
           <span className="flex items-center gap-2">
             Get Started <IconArrowRightRhombus />
