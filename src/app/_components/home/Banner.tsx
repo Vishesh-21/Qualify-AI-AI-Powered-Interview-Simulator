@@ -23,7 +23,7 @@ const Banner = () => {
       <Cover className="group">
         <h1
           id="title"
-          className="md:text-[6rem] text-[4rem] font-bold gradient-title md:leading-25 leading-15 uppercase tracking-wide group-hover:text-gray-300"
+          className="md:text-[6rem] text-[4rem] font-bolder gradient-title md:leading-25 leading-15 uppercase tracking-wide group-hover:text-gray-300"
         >
           Qualify AI
         </h1>

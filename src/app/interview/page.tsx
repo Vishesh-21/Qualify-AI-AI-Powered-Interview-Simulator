@@ -1,10 +1,10 @@
 import React from "react";
-import NotFound from "../_components/404";
+import Banner from "./_components/Banner";
 
 const InterviewDashBoardPage = () => {
   return (
-    <div>
-      <NotFound />
+    <div className="md:px-10 px-3 mt-10">
+      <Banner/>
     </div>
   );
 };
