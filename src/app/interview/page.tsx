@@ -3,7 +3,7 @@ import Banner from "./_components/Banner";
 
 const InterviewDashBoardPage = () => {
   return (
-    <div className="md:px-10 px-3 mt-10">
+    <div className="md:px-10 px-3 my-8">
       <Banner/>
     </div>
   );
