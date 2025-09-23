@@ -25,7 +25,7 @@ enum CallStatus {
 
 const Agent = ({ username, userId, type, imageUrl }: Props) => {
   const callStatus = CallStatus.ACTIVE;
-  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(true);
 
   const messages = [
     "Hey what's up!, tell me about your self",
@@ -79,9 +79,7 @@ const Agent = ({ username, userId, type, imageUrl }: Props) => {
         </Card>
 
         <Card
-          className={`rounded-sm min-h-[400px] flex items-center justify-center bg-transparent ${
-            isSpeaking ? "border-primary" : ""
-          }`}
+          className={`rounded-sm min-h-[400px] flex items-center justify-center bg-transparent`}
         >
           <CardContent className="flex items-center justify-center flex-col gap-10">
             <div className="relative w-[150px] h-[150px] rounded-full">
@@ -92,27 +90,6 @@ const Agent = ({ username, userId, type, imageUrl }: Props) => {
                 height={200}
                 className="object-cover w-full h-full rounded-full"
               />
-              {/* Wave 1 */}
-              {isSpeaking && (
-                <div
-                  className="speaking bg-accent-foreground -z-10"
-                  style={{ animationDelay: "0s" }}
-                ></div>
-              )}
-              {/* Wave 2 */}
-              {isSpeaking && (
-                <div
-                  className="speaking bg-accent-foreground -z-10"
-                  style={{ animationDelay: "0.6s" }}
-                ></div>
-              )}
-              {/* Wave 3 */}
-              {isSpeaking && (
-                <div
-                  className="speaking bg-accent-foreground/80 -z-10"
-                  style={{ animationDelay: "1.1s" }}
-                ></div>
-              )}
             </div>
 
             <p className="text-medium mt-4">{username}</p>
