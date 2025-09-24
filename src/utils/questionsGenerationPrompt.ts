@@ -15,7 +15,7 @@ export const questionsGenerationPrompt = ({
 }: QuestionsGenerationPromptProps) => {
   return `
 You are an expert interview question generator.  
-Your task is to generate exactly **${amount} unique interview questions and keep the questions concise and no more than 25 words**.
+Your task is to generate exactly **${amount} unique interview questions and keep per question in between 20 to 40 words**.
 
 ### Job Context
 - Role: ${role}  

@@ -1,13 +1,22 @@
+import { parseQuestions } from "@/utils/apiHelperFunctions";
+import { prisma } from "@/utils/prismaClient";
 import { questionsGenerationPrompt } from "@/utils/questionsGenerationPrompt";
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  return NextResponse.json(
-    { status: "success", message: "hello" },
-    { status: 200 }
-  );
+  try {
+    return NextResponse.json(
+      { status: "success", message: "hello" },
+      { status: 200 }
+    );
+  } catch (error: any) {
+    return NextResponse.json(
+      { status: "error", message: error.message ?? "Unexpected error" },
+      { status: 500 }
+    );
+  }
 }
 
 //generate interview questions
@@ -26,24 +35,36 @@ export async function POST(request: Request) {
       }),
     });
 
-    let questions: string[] = [];
-    try {
-      questions = JSON.parse(result.text);
-    } catch {
-      questions = result.text
-        .split("\n")
-        .map((q) => q.trim().replace(/^[-*0-9.]+\s*/, ""))
-        .filter(Boolean);
+    const questions = parseQuestions(result.text);
+
+    if (!questions.length) {
+      return NextResponse.json(
+        { status: "error", message: "no questions generated" },
+        { status: 500 }
+      );
     }
 
-    return Response.json(
-      { status: "success", message: "questions generated", questions },
+    await prisma.interview.create({
+      data: {
+        type,
+        techstack,
+        role,
+        level,
+        amount,
+        status: "finalized",
+        userId: userid,
+        questions,
+      },
+    });
+
+    return NextResponse.json(
+      { status: "success", message: "Interview generated successfully!" },
       { status: 200 }
     );
-  } catch (error) {
-    console.log(error);
-    return Response.json(
-      { status: "error", message: "error" },
+  } catch (error: any) {
+    console.error("POST /api/interviews error:", error);
+    return NextResponse.json(
+      { status: "error", message: error.message ?? "Unexpected error" },
       { status: 500 }
     );
   }
