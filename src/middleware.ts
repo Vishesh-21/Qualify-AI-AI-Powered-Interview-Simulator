@@ -1,4 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { run } from "node:test";
 
 const isPublicRoute = createRouteMatcher([
   "/sign-in(.*)",
@@ -7,9 +8,9 @@ const isPublicRoute = createRouteMatcher([
   "/api/vapi/generate",
 ]);
 
-export default clerkMiddleware((auth, req) => {
+export default clerkMiddleware(async (auth, req) => {
   if (!isPublicRoute(req)) {
-    auth().protect();
+    auth.protect();
   }
 });
 
@@ -20,4 +21,5 @@ export const config = {
     // Always run for API routes
     "/(api|trpc)(.*)",
   ],
+  runtime: "nodejs",
 };
