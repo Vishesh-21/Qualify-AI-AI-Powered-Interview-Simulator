@@ -1,13 +1,18 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { IconMicrophone } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-const Banner = ({
-  onGenerateInterview,
-}: {
-  onGenerateInterview: () => void;
-}) => {
+const Banner = () => {
+  const router = useRouter();
+
+  const handleGenerateInterview = () => {
+    router.push("/interview/generate");
+  };
+
   return (
     <WobbleCard containerClassName="min-h-[200px]">
       <div>
@@ -19,7 +24,7 @@ const Banner = ({
         </p>
         <Button
           className="mt-4 relative cursor-pointer"
-          onClick={onGenerateInterview}
+          onClick={handleGenerateInterview}
           variant={"outline"}
         >
           Generate an Interview <IconMicrophone />

@@ -31,3 +31,11 @@ Return the questions formatted should be like this: ["Question 1", "Question 2",
 
 Thank you <#`;
 };
+
+export function formateDate(date: Date) {
+  return new Date(date).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}

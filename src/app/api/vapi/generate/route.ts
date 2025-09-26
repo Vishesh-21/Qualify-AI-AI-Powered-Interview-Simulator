@@ -3,6 +3,7 @@ import { prisma } from "@/utils/prismaClient";
 import { questionsGenerationPrompt } from "@/utils/questionsGenerationPrompt";
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -56,6 +57,8 @@ export async function POST(request: Request) {
         questions,
       },
     });
+
+    revalidatePath("/interview");
 
     return NextResponse.json(
       { status: "success", message: "Interview generated successfully!" },

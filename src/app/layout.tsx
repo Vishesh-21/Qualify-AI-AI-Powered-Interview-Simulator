@@ -43,7 +43,9 @@ export default function RootLayout({
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en" suppressContentEditableWarning={true}>
-        <body className={`${poppins.className} antialiased overflow-x-hidden dark:bg-black`}>
+        <body
+          className={`${poppins.className} antialiased overflow-x-hidden dark:bg-black max-w-7xl mx-auto`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

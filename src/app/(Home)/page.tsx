@@ -9,7 +9,7 @@ import Footer from "../_components/home/Footer";
 
 const HomeComponent = () => {
   return (
-    <div className="md:px-10 px-3">
+    <div className="md:px-10 px-3 ">
       <Banner />
       <PurposeSection />
       <Services />
@@ -22,3 +22,4 @@ const HomeComponent = () => {
 };
 
 export default HomeComponent;
+

@@ -35,15 +35,16 @@ const Agent = ({ username, userId, type, imageUrl }: Props) => {
   const lastMessage = messages[messages.length - 1];
 
   return (
-    <div className="p-4 space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-6">
+    <div className="p-4 space-y-5 md:mt-4">
+      <div className="grid grid-cols-2 md:grid-cols-2 items-center justify-between gap-6">
         <Card
-          className={`rounded-sm min-h-[400px] flex items-center justify-center bg-transparent ${
-            isSpeaking ? "border-primary" : ""
-          }`}
+          className={`rounded-sm md:min-h-[400px] flex items-center justify-center max-h-[300px] bg-gradient-to-br from-indigo-100 via-gray-50 to-white
+    dark:from-violet-900 dark:via-neutral-950 dark:to-black ${
+      isSpeaking ? "border-primary" : ""
+    }`}
         >
           <CardContent className="flex items-center justify-center flex-col gap-10">
-            <div className="relative w-[150px] h-[150px] rounded-full">
+            <div className="relative md:w-[150px] md:h-[150px] w-[100px] h-[100px] rounded-full">
               <Image
                 src={HologramImage}
                 alt="agent"
@@ -74,15 +75,16 @@ const Agent = ({ username, userId, type, imageUrl }: Props) => {
                 ></div>
               )}
             </div>
-            <p className="text-medium mt-4">AI Voice Interviewer</p>
+            <p className="md:text-medium mt-4 text-sm">AI Interviewer</p>
           </CardContent>
         </Card>
 
         <Card
-          className={`rounded-sm min-h-[400px] flex items-center justify-center bg-transparent`}
+          className={`rounded-sm md:min-h-[400px] max-h-[300px] flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-gray-100 
+        dark:from-neutral-900 dark:via-neutral-950 dark:to-black`}
         >
           <CardContent className="flex items-center justify-center flex-col gap-10">
-            <div className="relative w-[150px] h-[150px] rounded-full">
+            <div className="relative md:w-[150px] md:h-[150px] w-[100px] h-[100px]  rounded-full">
               <Image
                 src={imageUrl}
                 alt="agent"
@@ -92,7 +94,7 @@ const Agent = ({ username, userId, type, imageUrl }: Props) => {
               />
             </div>
 
-            <p className="text-medium mt-4">{username}</p>
+            <p className="md:text-medium mt-4 text-sm">{username}</p>
           </CardContent>
         </Card>
       </div>
@@ -103,7 +105,7 @@ const Agent = ({ username, userId, type, imageUrl }: Props) => {
           <CardContent>
             <p
               className={cn(
-                "transition-opacity duration-500 opacity-0 tracking-wider text-center",
+                "transition-opacity duration-500 opacity-0 tracking-wider text-center md:text-md text-sm",
                 "animate-fade-in opacity-100"
               )}
             >
