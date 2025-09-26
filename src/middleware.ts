@@ -7,12 +7,11 @@ const isPublicRoute = createRouteMatcher([
   "/api/vapi/generate",
 ]);
 
-export default clerkMiddleware((auth, req) => {
+export default clerkMiddleware(async (auth, req) => {
   if (!isPublicRoute(req)) {
-    // 👇 Clerk automatically blocks unauthenticated users
-    auth().redirectToSignIn();
+    await auth.protect()
   }
-});
+})
 
 export const config = {
   matcher: [
